@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+models/
+inputs/
+outputs/
+*.mp3
+*.wav
+*.srt
+*.zip

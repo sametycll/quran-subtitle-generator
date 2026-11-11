@@ -1,0 +1,92 @@
+﻿KUR'AN MP3 -> ARAPCA / TURKCE / INGILIZCE SRT | WINDOWS v3
+=========================================================
+
+YENI OZELLIKLER
+- Tek MP3 icin ayri ayri AR, TR ve EN .srt dosyalari olusturur.
+- Arapca ayet, onceki surumde oldugu gibi MP3 sesiyle hizalanir (stable-ts).
+- Turkce ve Ingilizce icin ayri bolme secenekleri secilebilir.
+- Cevirilerin her bir parcasi MP3'UN TOPLAM SURESINI ESIT PAYLASIR.
+- Arapca metin kullanmadan yalnizca Turkce/Ing SRT uretmek mumkun.
+- Ayet bazli toplu isleme destegi vardir.
+
+MEVCUT v2 KULLANICILARI ICIN EN KOLAY GUNCELLEME
+1. Mevcut v2 program klasorunuzun yedegini alin.
+2. Yeni ZIP'in icindeki dosyalari ESKI PROGRAM KLASORUNE kopyalayin.
+3. "Dosyalari degistir" secenegini kabul edin.
+4. Klasordeki .venv klasorunu SILMEYIN. Yeniden kurulum gerekmez.
+5. 02_BASLAT.bat'i cift tiklayin.
+
+YENI KURULUM
+1. ZIP'in icindekileri bir klasore cikartin.
+2. 01_KURULUM.bat'i calistirin (Python 3.11/3.12 onerilir).
+3. FFmpeg ve FFprobe bulunamadiysa 03_FFMPEG_KUR.bat'i calistirin.
+4. Sonra 02_BASLAT.bat'i acin.
+
+TEK AYET
+1. MP3 dosyanizi secin.
+2. ARAPCA ayeti kendi alanina yapistirin.
+3. TURKCE meali ve INGILIZCE mealini kendi alanlarina yapistirin.
+4. Arapca icin 3-4, 3 veya 4 kelime secin.
+5. Turkce ve Ingilizce icin bagimsiz bolme seceneklerinden birini secin.
+6. "MP3 + METINLER -> 3 SRT OLUSTUR" dugmesine basin.
+
+Ornek ciktilar:
+  Bakara_61_AR.srt
+  Bakara_61_TR.srt
+  Bakara_61_EN.srt
+  Bakara_61_kontrol.json
+
+TURKCE / INGILIZCE BOLME SECENEKLERI
+- Metnin tamami (1 bolum)
+- 2, 3, 4, 5, 6, 8, 10 esit bolum
+- 3-4, 5-6, 7-8, 9-12, 13-16 kelimelik bolumler
+- Cumle cumle
+
+ORNEK: 60 saniyelik MP3'te "4 esit bolum" secildi:
+  1. bolum 00:00-00:15
+  2. bolum 00:15-00:30
+  3. bolum 00:30-00:45
+  4. bolum 00:45-01:00
+
+KELIME SECENEGINDE zamanlama da ESITTIR.
+Ornek: 20 kelime icin "7-8 kelimelik" secildiyse 3 metin
+parcasi olusur. Her biri 60/3=20 saniye gorunur.
+Metinler sirali, olabildigince dengeli kelime gruplarina bolunur.
+
+ONEMLI FARK
+- ARAPCA: gercek tilavet sesinin kelime zamanlari modellenir.
+- TURKCE / INGILIZCE: sesin Turkce/Ing okunmasi beklenmez.
+  Ekran metninin sureleri ESITLENECEKTIR. Ayetteki belirli
+  kelime ve anlamlarin sesle birebir eslesmesi beklenmez.
+- Cevirilerle ilgili parcalarin cumle sınirlarina dikkat edin.
+- Cevirilerde dil bilgisine gore otomatik yeniden yazma yapilmaz.
+
+TOPLU ISLEM
+Dosyalar ayni klasorde bu sekilde olabilir:
+  002061.mp3       (ses)
+  002061.txt       (Arapca; Arapca SRT icin zorunlu)
+  002061.tr.txt    (Turkce meal; istege bagli)
+  002061.en.txt    (Ingilizce meal; istege bagli)
+  002062.mp3
+  002062.txt
+  002062.tr.txt
+  002062.en.txt
+
+"TOPLU ISLEM" dugmesine basin ve bu klasoru secin.
+Bir meali eksik olan ayette o dile ait SRT uretilmez.
+Sadece TR/EN ile calisacaksaniz "Arapca SRT olustur"
+secenegindeki isareti kaldirin.
+
+KOMUT SATIRI (istege bagli)
+  python kuran_mp3_srt.py --mp3 "002061.mp3" --text-file "002061.txt" --tr-file "002061.tr.txt" --en-file "002061.en.txt"
+
+  python kuran_mp3_srt.py --mp3 "002061.mp3" --no-ar --tr-file "002061.tr.txt" --tr-mode parts:4 --en-file "002061.en.txt" --en-mode words:8
+
+GUVENLIK / DOGRU KULLANIM
+- Arapca metnin okunan sesle ayni olmasi onemlidir.
+- Ilk kullanimda model dosyasi indirilebilir.
+- Uzatmalar, duraklamalar ve tekrarlar Arapca hizalamayi zorlastirabilir.
+- Arapca metnin kendisi yeniden olusturulmaz, sizin girdiniz korunur.
+- SRT'leri CapCut'ta import edip sesle dinleyerek kontrol edin.
+- Cikti dosyalari ayni isimle varsa UZERINE YAZILIR.
+- Kuran meallerini siz sagliyorsunuz; program meali degistirmez.
